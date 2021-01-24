@@ -7,18 +7,20 @@
 - Benefits: debugger, clean code
 
 ## Packages
-
+```
 npm install -g typescript
     tsc sandbox.ts -> Compile TS into JS
     tsc sandbox.ts -w -> whatch
+```
 
+After tsc --init, just let run tsc -w in one window command 
 
-### Prerequisites
+### Commands
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+tsc --init -> Generate tsconfig.json file
 ```
 
 ### Installing
