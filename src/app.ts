@@ -1,14 +1,13 @@
 // Classes
-class Invoicex{
-    client: string;
-    details: string;
-    amount: number;
+// Access modifiers in class - Private, readonly, public
 
-    constructor(c: string, d: string, a:number){
-        this.client = c;
-        this.details = d;
-        this.amount = a;
-    }
+class Invoicex{
+    // Put the access modifier in constructor
+    constructor(
+        public client: string,
+        public details:string,
+        public amount: number
+    ){}
 
     format(){
         return `${this.client} owes $ ${this.amount} for ${this.details}`;

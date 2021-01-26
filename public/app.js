@@ -1,10 +1,12 @@
 "use strict";
 // Classes
+// Access modifiers in class - Private, readonly, public
 var Invoicex = /** @class */ (function () {
-    function Invoicex(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    // Put the access modifier in constructor
+    function Invoicex(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
     }
     Invoicex.prototype.format = function () {
         return this.client + " owes $ " + this.amount + " for " + this.details;
