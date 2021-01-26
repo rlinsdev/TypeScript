@@ -1,18 +1,4 @@
-// Classes
-// Access modifiers in class - Private, readonly, public
-
-class Invoicex{
-    // Put the access modifier in constructor
-    constructor(
-        public client: string,
-        public details:string,
-        public amount: number
-    ){}
-
-    format(){
-        return `${this.client} owes $ ${this.amount} for ${this.details}`;
-    }
-}
+import { Invoicex } from './classes/invoice.js';
 
 const inOne = new Invoicex('mario','work on the webside',400);
 const inTwo = new Invoicex('luigi','work on the webside',500);

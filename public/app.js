@@ -1,21 +1,7 @@
-"use strict";
-// Classes
-// Access modifiers in class - Private, readonly, public
-var Invoicex = /** @class */ (function () {
-    // Put the access modifier in constructor
-    function Invoicex(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    Invoicex.prototype.format = function () {
-        return this.client + " owes $ " + this.amount + " for " + this.details;
-    };
-    return Invoicex;
-}());
-var inOne = new Invoicex('mario', 'work on the webside', 400);
-var inTwo = new Invoicex('luigi', 'work on the webside', 500);
-var invoices = [];
+import { Invoicex } from './classes/invoice.js';
+const inOne = new Invoicex('mario', 'work on the webside', 400);
+const inTwo = new Invoicex('luigi', 'work on the webside', 500);
+let invoices = [];
 invoices.push(inOne);
 invoices.push(inTwo);
 console.log(invoices);
