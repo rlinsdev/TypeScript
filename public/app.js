@@ -1,4 +1,9 @@
 import { Invoicex } from './classes/invoice.js';
+import { Payment } from './classes/Payment.js';
+let docOne;
+let docTwo;
+docOne = new Invoicex('yoshy', 'web work', 250);
+docTwo = new Payment('mario', 'plumbing work', 350);
 const inOne = new Invoicex('mario', 'work on the webside', 400);
 const inTwo = new Invoicex('luigi', 'work on the webside', 500);
 let invoices = [];

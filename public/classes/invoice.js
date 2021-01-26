@@ -1,6 +1,3 @@
-// Classes
-// Access modifiers in class - Private, readonly, public
-// Module system - Just moder browsers understand
 export class Invoicex {
     // Put the access modifier in constructor
     constructor(client, details, amount) {
