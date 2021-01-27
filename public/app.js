@@ -1,15 +1,35 @@
 import { Invoicex } from './classes/invoice.js';
+import { ListTemplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/Payment.js';
-let docOne;
-let docTwo;
-docOne = new Invoicex('yoshy', 'web work', 250);
-docTwo = new Payment('mario', 'plumbing work', 350);
-const inOne = new Invoicex('mario', 'work on the webside', 400);
-const inTwo = new Invoicex('luigi', 'work on the webside', 500);
-let invoices = [];
-invoices.push(inOne);
-invoices.push(inTwo);
-console.log(invoices);
+const form = document.querySelector('.new-item-form');
+const type = document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+// list template instance
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoicex(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    }
+    list.render(doc, type.value, 'end');
+});
+// let docOne: HasFormatter;
+// let docTwo: HasFormatter;
+// docOne = new Invoicex('yoshy','web work',250);
+// docTwo = new Payment('mario','plumbing work',350);
+// const inOne = new Invoicex('mario','work on the webside',400);
+// const inTwo = new Invoicex('luigi','work on the webside',500);
+// let invoices: Invoicex[] = [];
+// invoices.push(inOne);
+// invoices.push(inTwo);
+// console.log(invoices);
 // //
 // //3) Function sgnature
 // //
