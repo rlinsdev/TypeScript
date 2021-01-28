@@ -11,40 +11,25 @@ const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
 // list template instance
+// Exclamação - Campo virá sim do HTML
 const ul = document.querySelector('ul')!;
 const list = new ListTemplate(ul);
 
 form.addEventListener('submit', (e: Event) =>{
     e.preventDefault();
 
+    // Tuples
+    let values: [string, string, number];
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
     let doc: HasFormatter;
-    if(type.value==='invoice'){
-        doc = new Invoicex(tofrom.value, details.value, amount.valueAsNumber);
+    if(type.value === 'invoice'){
+        // Triple Dot - continuar com os valores que já estavam neste objeto
+        doc = new Invoicex(...values);
     } else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
 
-    list.render(doc, type.value,'end');
+    list.render(doc, type.value, 'end');
 
 })
-
-
-// Enum
-enum ResourceType {BOOK, AUTHOR, FILM, DIRECTOR, PERSON}
-interface Resource<T> {
-    uid: number;
-    resourceType: ResourceType;
-    data: T;
-}
-
-const docOne: Resource<object> = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: { tile: 'name of the wind' }
-}
-
-const docTwo: Resource<object> = {
-    uid: 10,
-    resourceType: ResourceType.AUTHOR,
-    data: {name: 'yoshi'}
-}

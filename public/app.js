@@ -7,35 +7,21 @@ const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
 // list template instance
+// Exclamação - Campo virá sim do HTML
 const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    // Tuples
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoicex(tofrom.value, details.value, amount.valueAsNumber);
+        // Triple Dot - continuar com os valores que já estavam neste objeto
+        doc = new Invoicex(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
-// Enum
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["FILM"] = 2] = "FILM";
-    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-})(ResourceType || (ResourceType = {}));
-const docOne = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: { tile: 'name of the wind' }
-};
-const docTwo = {
-    uid: 10,
-    resourceType: ResourceType.AUTHOR,
-    data: { name: 'yoshi' }
-};
