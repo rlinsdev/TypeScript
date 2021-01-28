@@ -28,30 +28,23 @@ form.addEventListener('submit', (e: Event) =>{
 
 })
 
-// no generic
-// const addUID = (obj: object) =>{
-// Generic
-const addUID = <T>(obj: T) =>{
-    let uid = Math.floor(Math.random() * 100);
-    return {...obj,uid};
-}
 
-let docOne = addUID({name: 'yoshi', age:40});
-
-// Generic
-console.log(docOne.age);
-console.log(docOne.name);
-
+// Enum
+enum ResourceType {BOOK, AUTHOR, FILM, DIRECTOR, PERSON}
 interface Resource<T> {
     uid: number;
-    resourceName:string;
-    data: T // This field will accept any type
+    resourceType: ResourceType;
+    data: T;
 }
 
-//const docThree: Resource<string> = {
-    const docThree: Resource<object> = {
-    uid:1,
-    resourceName:'Person',
-    //data:'Any String'
-    data:{name:'aaaaa'}
+const docOne: Resource<object> = {
+    uid: 1,
+    resourceType: ResourceType.BOOK,
+    data: { tile: 'name of the wind' }
+}
+
+const docTwo: Resource<object> = {
+    uid: 10,
+    resourceType: ResourceType.AUTHOR,
+    data: {name: 'yoshi'}
 }

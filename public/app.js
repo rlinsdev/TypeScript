@@ -20,21 +20,22 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
-// no generic
-// const addUID = (obj: object) =>{
-// Generic
-const addUID = (obj) => {
-    let uid = Math.floor(Math.random() * 100);
-    return Object.assign(Object.assign({}, obj), { uid });
-};
-let docOne = addUID({ name: 'yoshi', age: 40 });
-// Generic
-console.log(docOne.age);
-console.log(docOne.name);
-//const docThree: Resource<string> = {
-const docThree = {
+// Enum
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
+const docOne = {
     uid: 1,
-    resourceName: 'Person',
-    //data:'Any String'
-    data: { name: 'aaaaa' }
+    resourceType: ResourceType.BOOK,
+    data: { tile: 'name of the wind' }
+};
+const docTwo = {
+    uid: 10,
+    resourceType: ResourceType.AUTHOR,
+    data: { name: 'yoshi' }
 };
